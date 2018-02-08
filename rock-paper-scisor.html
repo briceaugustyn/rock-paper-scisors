@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+<body>
+     <div class="container">
+                <div class="row">
+                  <div class="col-md-offset-2 col-md-8">
+                    <div class="jumbotron">
+                      <h2>You just typed <span id="user-text"><strong>...Nothing.</strong></span></h2>
+                      <h2>Computer typed <span id="computer-text"><strong>...Nothing.</strong></span></h2>
+                      <h2>Ties<span id="Ties"><strong>...Nothing.</strong></span></h2>
+                      <h2>Win<span id="Win"><strong>...Nothing.</strong></span></h2>
+                      <h2>Loses<span id="Loses"><strong>...Nothing.</strong></span></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  </div>
+  
+  <script type="text/javascript">
+    
+    // 1 Variables
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+    var Win=0;
+    var Loses=0;
+    var Ties=0;
+
+     // 2 Grab the key typed and update userText 
+    // Let's start by grabbing a reference to the <span> below.
+    var Win_result = document.getElementById("Win")
+    var Ties_result = document.getElementById("Ties")
+    var Loses_result = document.getElementById("Loses")
+    var userText = document.getElementById("user-text")
+    
+    // 3 MAIN FUNCTION 
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+    // Determines which key was pressed.
+    var userGuess = event.key;
+    // Next, we give JavaScript a function to execute when onkeyup event fires.
+    if (event.key=="p"){
+        userText.textContent = "Paper";}
+    else if (event.key=="r"){
+        userText.textContent = "Rock";}
+    else if (event.key=="Scisors") {
+        userText.textContent = event.key;
+    } 
+
+    // 4 Randomly choose for Computer
+    // Randomly chooses a choice from the options array. This is the Computer's guess.
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    // Alerts the key the user pressed (userGuess).
+
+      
+    // 5 Increments Win Loses and Ties based on different cases
+    if (userGuess =="r"){
+        if(computerGuess =="r"){Ties++; console.log("Ties r and r");;}
+        
+        else if (computerGuess =="s") {Win++;console.log("Win r and s");}
+        else{Loses++;console.log("Loses r and p");}
+    }
+    if (userGuess =="p"){
+        if(computerGuess =="p"){Ties++;console.log("Ties p and p")}
+        
+        else if (computerGuess =="r") {Win++;console.log("Win p and r")}
+        else{Loses++;console.log("Loses p and s")}
+    }
+    if (userGuess =="s"){
+        if(computerGuess =="s"){Ties++;console.log("Ties s and s")}
+        else if (computerGuess =="p") {Win++;console.log("Loses s and p")}
+        else{Loses++;console.log("Loses s and r")}
+    }
+
+    
+    // 6 Update HTML with global variables
+    var Computer_result = document.getElementById("computer-text")
+    Win_result.textContent = Win;
+    Loses_result.textContent = Loses;
+    Ties_result.textContent = Ties;
+    Computer_result.textContent = computerGuess;
+    
+   
+    // 7 Send Result to Console for debuging
+    console.log("win "+Win);
+    console.log("Ties "+Ties);
+    console.log("Loses "+Loses);
+    console.log("Computer guess "+computerGuess);
+};
+  </script>
+</body>
+</html>
